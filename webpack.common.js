@@ -1,13 +1,26 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
   entry: './src/index.js',
   plugins: [
     new HtmlWebpackPlugin({
-      template: './src/index.html',
+      template: './public/index.html',
     }),
     new CleanWebpackPlugin(),
+    new CopyPlugin({
+      patterns: [
+        {
+          from: './public',
+          globOptions: {
+            ignore: [
+                '**/index.html'
+            ]
+        }
+        },
+      ]
+    })
   ],
   module: {
     rules: [
@@ -15,30 +28,6 @@ module.exports = {
         test: /\.scss$/,
         use: [ 'style-loader', 'css-loader', 'sass-loader' ]
       },
-      {
-        test: /\.html$/,
-        use: [ 'html-loader' ]
-      },
-      {
-        test: /\.(svg|png|jpg|jpeg|gif|webp)$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: '[name].[hash].[ext]',
-              outputPath: 'image'
-            }
-          }
-        ]
-      },
-      {
-        test: /\.ico$/,
-        use: [ 'file-loader' ]
-      },
-      {
-        test: /\.(woff|woff2|ttf|eot)$/,
-        loader: 'file-loader'
-      }
     ]
   }
 };
