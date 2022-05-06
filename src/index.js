@@ -1,3 +1,4 @@
+import './assets/styles/main/main.scss';
 import './scripts/header';
 import './scripts/popup';
 import { shuffle } from './scripts/utils';
