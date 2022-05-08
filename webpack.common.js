@@ -4,10 +4,19 @@ const CopyPlugin = require("copy-webpack-plugin");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
-  entry: './src/index.js',
+  entry: {
+    main: './src/main.js',
+    pets: './src/pets.js'
+  },
   plugins: [
     new HtmlWebpackPlugin({
       template: './public/index.html',
+      chunks: [ 'main' ],
+    }),
+    new HtmlWebpackPlugin({
+      template: './public/pets/index.html',
+      filename: 'pets/index.html',
+      chunks: [ 'pets' ]
     }),
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin(),

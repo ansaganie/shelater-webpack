@@ -1,3 +1,9 @@
+import './assets/styles/pets/pets.scss';
+import './scripts/header';
+import './scripts/popup';
+import { shuffle } from './scripts/utils';
+import { PETS } from './scripts/data';
+import { createCardElement } from './scripts/card';
 
 const CATALOG = document.querySelector('.pets__catalog');
 const FIRST_PAGE_BTN = document.querySelector('#first-page-btn');
@@ -18,7 +24,7 @@ if (768 <= window.innerWidth && window.innerWidth < 1280) {
 
 //generate pets and calculate pages
 const pets = new Array(6)
-    .fill(window.pets)
+    .fill(PETS)
     .flat()
     .map((pet) => ({ ...pet, id: cardIdCount++ }));
 window.pets = pets;

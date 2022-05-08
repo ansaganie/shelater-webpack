@@ -5,6 +5,8 @@ import { shuffle } from './scripts/utils';
 import { PETS } from './scripts/data';
 import { createCardElement } from './scripts/card';
 
+console.log('source map');
+
 /*------------------- Carousel -----------------------*/
 const SLIDER_CONTAINER = document.querySelector('.slider__container');
 const LEFT_BUTTON = document.querySelector('.slider__control.slider__back');
